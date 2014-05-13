@@ -1,0 +1,13 @@
+{
+  "name": "VIP",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "",
+    "grunt-contrib-cssmin": "",
+    "grunt-contrib-csslint": "",
+    "grunt-contrib-watch": "",
+    "grunt-contrib-clean": ""
+  },
+  "main": "Gruntfile.js",
+  "author": "Sam Zeng"
+}

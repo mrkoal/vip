@@ -1,0 +1,19 @@
+// Clearfix
+// 出处：http://nicolasgallagher.com/micro-clearfix-hack/
+// 1. IE6/7，触发 haslayout 处理浮动时下边距重合
+// 2. `table` 产生[匿名框(anonymous boxes)](//www.w3.org/TR/CSS2/tables.html#anonymous-boxes)，匿名框中的 `table-cell` 创建新的 BFC；`:before` 为处理 `margin-top` 重叠。
+// 3. 处理 Opera 的 bug
+
+clearfix() {
+    zoom: 1; // 1
+
+    &:before,
+    &:after {
+        display: table; // 2
+        content: ' '; // 3
+    }
+
+    &:after {
+        clear: both;
+    }
+}

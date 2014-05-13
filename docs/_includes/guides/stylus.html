@@ -1,0 +1,85 @@
+<section class="docs-section">
+    <h1 id="guide__stylus">Stylus</h1>
+
+    <p><em>以往一个样式文件解决了所有问题，也能在一个文件内找到对应的样式；使用预处理器只是将它们尽可能地拆散，然后再组装在一起。</em></p>
+
+    <p>模块默认的自定义变量在其头部声明。</p>
+
+    <h3>目录结构</h3>
+
+{% highlight css %}
+stylus
+   |-- lib
+   |-- xxx
+   |
+   |-- xxx /* 某个域或某条业务线 */
+   |     |-- mixins /* 存放 `方法` 的一些效果等 */
+   |     |     |-- clearfix.styl
+   |     |     |-- hide-text.styl
+   |     |     |-- size.styl
+   |     |     |-- text-overflow.styl
+   |     |     |-- ...
+   |     |
+   |     |-- commons /* 公共的 */
+   |     |     |-- reset.styl
+   |     |     |-- buttons.styl
+   |     |     |-- forms.styl
+   |     |     |-- tables.styl
+   |     |     |-- ...
+   |     |
+   |     |-- modules /* 模块，通过使用公共的元件去组装成不同的模块，所有频道的模块都存放在此。 */
+   |     |     |-- header.styl
+   |     |     |-- footer.styl
+   |     |     |-- shoppint-list.styl
+   |     |     |-- ...
+   |     |
+   |     |-- layouts /* 布局，Grid 或不同频道的布局或响应式布局 */
+   |     |     |-- layout.styl
+   |     |     |-- ...
+   |     |
+   |     |-- channels /* 频道 */
+   |     |     |-- xxx /* 某个频道 */
+   |     |     |     |-- common.styl /* 抽 `xxx-index.styl` 里抽在公用 */
+   |     |     |     |-- variables.styl /* 针对该频道的变量 */
+   |     |     |     |-- xxx-index.styl
+   |     |     |     |-- xxx-index.styl
+   |     |     |     |-- xxx-index.styl
+   |     |     |     |-- ...
+   |
+   |-- xxx
+   |-- ...
+{% endhighlight %}
+</section>
+
+    <h3>书写约束</h3>
+
+    <p>不强制个人使用语法的习惯，但<strong>请保持在一个文件内使用相同的写法</strong>。</p>
+
+{% highlight css %}
+/* 方式一，推荐 */
+.nav {
+    display: block;
+}
+
+/* 方式二 */
+.nav
+    display: block
+
+/* 方式三 */
+.nav
+    display block
+{% endhighlight %}
+
+    <h3>注意点</h3>
+
+{% highlight css %}
+/* 错误 */
+.vip {
+    background-image: url({$imgDomain}/vip.png?{$shopImgVer});
+}
+
+/* 正确 */
+.vip {
+    background-image: unquote('url({$imgDomain}/vip.png?{$shopImgVer})');
+}
+{% endhighlight %}
